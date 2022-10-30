@@ -362,7 +362,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
             $w = $box[2] - $box[0];
             $angle = $this->rand(-$this->maxAngle, $this->maxAngle);
             $offset = $this->rand(-$this->maxOffset, $this->maxOffset);
-            \imagettftext($image, $size, $angle, $x, $y + $offset, $col, $font, $symbol);
+            \imagettftext($image, $size, $angle, (int) $x, (int) $y + $offset, (int) $col, $font, $symbol);
             $x += $w;
         }
 
@@ -605,7 +605,7 @@ class CaptchaBuilder implements CaptchaBuilderInterface
             $value = current($this->fingerprint);
             next($this->fingerprint);
         } else {
-            $value = mt_rand($min, $max);
+            $value = mt_rand((int) $min, (int) $max);
             $this->fingerprint[] = $value;
         }
 
